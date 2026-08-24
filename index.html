@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light" />
+<meta name="theme-color" content="#020617" />
+<meta name="description" content="Vinicius OS — Life Operating System com capacity planning, nutrição operacional e Life Intelligence Engine." />
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Vinicius OS • Life Operating System</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234f46e5'/%3E%3Cpath d='M55 12 28 56h18l-6 32 30-46H52z' fill='white'/%3E%3C/svg%3E" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="auth-screen" class="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12.5 2 4 13.5h6.5L11 22l8.5-11.5H13z"/></svg>
+    </div>
+    <h1>Vinicius OS</h1>
+    <p class="auth-sub">Life Operating System — seus dados, na nuvem, de graça.</p>
+    <form id="auth-form">
+      <label class="field"><span>E-mail</span><input id="auth-email" type="email" required placeholder="voce@email.com" /></label>
+      <label class="field"><span>Senha</span><input id="auth-pass" type="password" required minlength="6" placeholder="mínimo 6 caracteres" /></label>
+      <button type="submit" class="btn btn-primary btn-block" id="auth-submit">Entrar</button>
+    </form>
+    <button class="btn btn-ghost btn-block" id="auth-toggle">Não tem conta? Criar agora</button>
+    <p id="auth-msg" class="auth-msg"></p>
+    <p class="auth-note">Seus dados ficam no seu próprio banco Supabase (grátis). Nada é enviado para terceiros além disso.</p>
+  </div>
+</div>
+
+<div id="root"></div>
+<div id="layer"></div>
+
+<script src="config.js"></script>
+<script src="engine.js"></script>
+<script src="app.js"></script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){ /* offline opcional */ });
+  });
+}
+</script>
+</body>
+</html>
